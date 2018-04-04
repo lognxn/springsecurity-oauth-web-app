@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>imooc-security-demo</artifactId>
+	<parent>
+		<groupId>com.imooc.security</groupId>
+		<artifactId>imooc-security</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../imooc-security</relativePath>
+	</parent>
+
+	<dependencies>
+		<!-- demo项目测试brower项目时需引用 -->
+		<dependency>
+			<groupId>com.imooc.security</groupId>
+			<artifactId>imooc-security-browser</artifactId>
+			<version>${imooc.security.version}</version>
+		</dependency>
+		<!-- demo项目测试app项目时需引用 -->
+		<!-- <dependency>
+			<groupId>com.imooc.security</groupId>
+			<artifactId>imooc-security-app</artifactId>
+			<version>${imooc.security.version}</version>
+		</dependency> -->
+		<!-- spring的测试框架 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		<!-- 用于Aspect -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.8.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.8.0</version>
+		</dependency>
+		<!-- jwt增强信息解析用 -->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.7.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- springboot的打包插件, 如果不用该插件, 那么maven依赖的jar就不会被打进去 -->
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>1.3.3.RELEASE</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<!-- 打包完毕后的jar的名称为demo.jar(不加这个是后面还加了版本号) -->
+		<finalName>demo</finalName>
+	</build>
+</project>
